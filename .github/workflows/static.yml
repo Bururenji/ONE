@@ -1,0 +1,21 @@
+name: Sync cangkutest
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:  # 允许手动触发
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout One
+        uses: actions/checkout@v4
+
+      - name: Clone asdasd
+        run: |
+          git clone https://github.com/bururenji/asdasd.git One/Sec
+
+      - name: Deploy to Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./One/Sec  # 直接部署子目录
